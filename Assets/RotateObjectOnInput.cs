@@ -38,7 +38,7 @@ public class RotateObjectOnInput : MonoBehaviour
                     {
                         var deltaPosition = touchData.interactionPosition - lastInteractionPosition;
                         float rotationAmount = deltaPosition.x * rotationSpeed; // Adjust the multiplier as needed
-                        selectedObject.transform.Rotate(Vector3.forward, rotationAmount);
+                        selectedObject.transform.Rotate(-Vector3.forward, rotationAmount);
                         lastInteractionPosition = touchData.interactionPosition;
                     }
                 }
@@ -58,7 +58,7 @@ public class RotateObjectOnInput : MonoBehaviour
         if (selectedObject == null)
             return;
         var lastRotation = followingObject.transform.rotation;
-        lastRotation.y = selectedObject.transform.rotation.z * followRotationSpeed;
+        lastRotation.y = selectedObject.transform.rotation.z * followRotationSpeed * -1f;
         followingObject.transform.rotation = lastRotation;
     }
 }
